@@ -1,0 +1,3 @@
+string = "Louis"
+arr = [char for char in string]
+print(arr)
