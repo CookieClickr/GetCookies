@@ -1,0 +1,20 @@
+Because I am a complete beginner with python, I am going to use the challenges from the Webseite Advent of Code (https://adventofcode.com/2015/day/1). 
+Here one can find a lot coding problems with in creasing difficulty. I am going to start with Day 1 of 2015 because it starts fairly easy.
+
+This one is easy to explain. Santa is in a builing and he has instructions where he should deliver a present. '(' means go up one floor and ')' down one. 
+The input is one long string containing only '(' and ')'. The question is on witch floor he ends up after the instructions.
+
+import array
+with open("C:\\Users\\Admin\\Documents\\AOC\\DayOne2015") as file:
+    for line in file:
+        my_Input = line.rstrip()
+
+to_array = [char for char in my_Input]
+x = 0
+for a in to_array:
+    if a == '(':
+        x = x + 1
+    else:
+        x = x - 1
+
+print(x)
