@@ -1,0 +1,25 @@
+Part 2:
+Now, given the same instructions, find the position of the first character that causes him to enter the basement (floor -1). 
+The first character in the instructions has position 1, the second character has position 2, and so on.
+
+Code:
+import array
+with open("C:\\Users\\Admin\\Documents\\AOC\\DayOne2015") as file:
+    for line in file:
+        my_Input = line.rstrip()
+
+to_array = [char for char in my_Input]
+x = 0
+y = 0
+for a in to_array:
+    y = y+1
+    if a == '(':
+        x = x + 1
+    else:
+        x = x - 1
+    if x == -1:
+        print(y)
+        break
+
+Answer:
+1783
