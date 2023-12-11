@@ -1,0 +1,39 @@
+Day 2: I Was Told There Would Be No Math:
+
+The elves need to calculate the total square footage of wrapping paper required for gifts, 
+considering the surface area of each box (2lw + 2wh + 2hl) plus the area of the smallest side, based on the given dimensions in feet.
+
+The input looks like this: 
+...
+26x27x4
+5x26x17
+22x11x19
+8x26x3
+24x19x22
+7x1x4
+...
+
+import array
+with open("C:\\Users\\Admin\\Documents\\AOC\\DayTwo2015") as file:
+    lines = [x.rstrip() for x in file]
+erg = 0
+def doCalc(w,l,h):
+    myrealIntegers: list = [l*w, w*h, h*l]
+    erg: int = l*w*2+2*w*h+2*h*l + min(myrealIntegers)
+
+    return erg
+def intParse(value):
+    try:
+        return int(value)
+    except ValueError:
+        return value
+for line in lines:
+    myIntAsStrList: list = line.split("x")
+    w: int = intParse(myIntAsStrList[0])
+    l: int = intParse(myIntAsStrList[1])
+    h: int = intParse(myIntAsStrList[2])
+
+    erg: int = erg + doCalc(w, l, h)
+print(erg)
+
+The result is 1586300.
