@@ -1,0 +1,31 @@
+Day 2: I Was Told There Would Be No Math
+
+In Part 2 of the task, the elves need to determine the total feet of ribbon required to wrap presents, 
+considering the two smallest perimeter for each present to wrap it and the cubic feet of volume for the bow, based on the given dimensions.
+Example: A present with dimensions 2x3x4 requires 2+2+3+3 = 10 feet of ribbon to wrap the present plus 2*3*4 = 24 feet of ribbon for the bow, for a total of 34 feet.
+
+I just changed my doCalc function.
+Code:
+import array
+with open("C:\\Users\\Admin\\Documents\\AOC\\DayTwo2015") as file:
+    lines = [x.rstrip() for x in file]
+erg = 0
+def doCalc(w,l,h):
+    myrealIntegers: list = [(2*l+2*w), (2*w+2*h), (2*h+2*l)]
+    erg: int = w*l*h + min(myrealIntegers)
+
+    return erg
+def intParse(value):
+    try:
+        return int(value)
+    except ValueError:
+        return value
+for line in lines:
+    myIntAsStrList: list = line.split("x")
+    w: int = intParse(myIntAsStrList[0])
+    l: int = intParse(myIntAsStrList[1])
+    h: int = intParse(myIntAsStrList[2])
+
+    erg: int = erg + doCalc(w, l, h)
+print(erg)
+Das Ergebnis is 3737498.
