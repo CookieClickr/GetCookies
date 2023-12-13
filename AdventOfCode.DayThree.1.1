@@ -1,0 +1,45 @@
+On Day 3, Santa delivers presents on an infinite 2D grid of houses based on directions from an elf. The elf's directions, 
+influenced by eggnog, may cause Santa to revisit some houses. The task is to determine how many houses receive at least one present. 
+Examples illustrate the outcomes for different sets of directions, highlighting instances of revisiting houses.
+
+NOT WORKING JET; I need to learn how to crate a dictionary of lists and how to work with it in python
+Code:
+import array
+with open("C:\\Users\\Admin\\Documents\\AOC\\DayThree2015.txt") as file:
+    line = file.read()
+Input: list[chr] = [char for char in line]
+UD = 0
+LR = 0
+def readthroughUD(input, ud):
+    upDown: int = 0
+    if input == '^':
+        upDown = upDown +1
+    elif input == 'v':
+        upDown = upDown-1
+    ud = ud + upDown
+    return ud
+def readthroughLR(input, lr):
+    leftRight: int = 0
+    if input == '<':
+        leftRight = leftRight -1
+    elif input == '>':
+        leftRight = leftRight +1
+    lr = lr + leftRight
+    return lr
+
+mydict: dict = {UD:[LR]}
+for a in Input:
+    UD = readthroughUD(a, UD)
+    LR = readthroughLR(a, LR)
+    if UD in mydict.keys():
+        if LR in mydict.values():
+            continue
+        else:
+            mydict[UD].append(LR)
+    else:
+        mydict[UD].append(LR)
+i = 0
+for key in mydict.keys():
+    for values in mydict[key]:
+        i = i+1
+print(i)
