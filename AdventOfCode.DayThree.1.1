@@ -2,7 +2,6 @@ On Day 3, Santa delivers presents on an infinite 2D grid of houses based on dire
 influenced by eggnog, may cause Santa to revisit some houses. The task is to determine how many houses receive at least one present. 
 Examples illustrate the outcomes for different sets of directions, highlighting instances of revisiting houses.
 
-NOT WORKING JET; I need to learn how to crate a dictionary of lists and how to work with it in python
 Code:
 import array
 with open("C:\\Users\\Admin\\Documents\\AOC\\DayThree2015.txt") as file:
@@ -32,14 +31,16 @@ for a in Input:
     UD = readthroughUD(a, UD)
     LR = readthroughLR(a, LR)
     if UD in mydict.keys():
-        if LR in mydict.values():
+        if LR in mydict[UD]:
             continue
         else:
             mydict[UD].append(LR)
     else:
-        mydict[UD].append(LR)
+        mydict[UD] = [LR]
 i = 0
 for key in mydict.keys():
     for values in mydict[key]:
         i = i+1
 print(i)
+
+2572 Houses get at least one present
