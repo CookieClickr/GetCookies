@@ -1,0 +1,71 @@
+Santa and Robo-Santa take turns delivering presents, starting from the same location and following instructions from an elf. The goal is to determine how many houses receive at least one present. 
+In an example where Santa goes north (^) and Robo-Santa goes south (v), they deliver presents to 3 houses. Another example (^>v<) results in 3 houses receiving presents, and a sequence of 
+^v^v^v^v^v leads to presents being delivered to 11 houses.
+
+First Time using a test case
+code:
+import array
+with open("C:\\Users\\Admin\\Documents\\AOC\\DayThree2015.txt") as file:
+    line = file.read()
+Input: list[chr] = [char for char in line]
+UD = 0
+LR = 0
+UDR = 0
+LRR = 0
+#TestCase
+#Astring = "^v^v^v^v^v"
+#Input: list[chr] = [char for char in Astring]
+def readthroughUD(input, ud):
+    upDown: int = 0
+    if input == '^':
+        upDown = upDown +1
+    elif input == 'v':
+        upDown = upDown-1
+    ud = ud + upDown
+    return ud
+def readthroughLR(input, lr):
+    leftRight: int = 0
+    if input == '<':
+        leftRight = leftRight -1
+    elif input == '>':
+        leftRight = leftRight +1
+    lr = lr + leftRight
+    return lr
+
+def myBiblioWorker(UD,LR,mydict):
+    if UD in mydict.keys():
+        if LR in mydict[UD]:
+            return
+        else:
+            mydict[UD].append(LR)
+    else:
+        mydict[UD] = [LR]
+    if UDR in mydict.keys():
+        if LRR in mydict[UDR]:
+            return
+        else:
+            mydict[UDR].append(LRR)
+    else:
+        mydict[UDR] = [LRR]
+
+x = 0
+mydict: dict = {UD:[LR]}
+for a in Input:
+    if x == 1:
+        UDR = readthroughUD(a, UDR)
+        LRR = readthroughLR(a, LRR)
+        x = 0
+        myBiblioWorker(UDR,LRR,mydict)
+    else :
+        UD = readthroughUD(a, UD)
+        LR = readthroughLR(a, LR)
+        x=x+1
+        myBiblioWorker(UD, LR, mydict)
+
+i = 0
+for key in mydict.keys():
+    for values in mydict[key]:
+        i = i+1
+print(i)
+
+Ergebnis: 2631
