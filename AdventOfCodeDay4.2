@@ -1,0 +1,44 @@
+Same as Day 4.1 just with 6 zeros
+Took my laptop like 15 seconds to run through this I was allready wondering what could have gone wrong
+But I haven't changed much, only the if-statement for the round and count variable in the CheckCharArray method/funktion.
+
+Code:
+import hashlib
+# import string input: ckczppom
+# loop that goes through them
+# add numbers to the end starting at 0
+# convert to one string: input + number
+# hash it
+# convert to char array and see if it checks out else number+1
+# if it has 5 leading zeros break the loop and output number
+
+def hexadigest(number: int, input: str):
+    convert = input + str(number)
+    result = hashlib.md5(convert.encode())
+    return result.hexdigest()
+def CheckCharArray(input: str):
+    CharArray = [char for char in input]
+    count: int = 0
+    round: int = 0
+    for possibleZero in CharArray:
+        if possibleZero == '0':
+            count = count + 1
+        if count == 6:
+            return True
+        round = round + 1
+        if round == 6:
+            return False
+
+input: str = "ckczppom"
+getThemZeros = False
+number = 0
+gethashing = "X"
+while getThemZeros == False:
+    gethashing = hexadigest(number, input)
+    getThemZeros = CheckCharArray(gethashing)
+    number = number + 1
+print(number)
+print(gethashing)
+
+The number is: 3938039
+The hexadecimal equivalent to the MD5 hash is: 00000028023e3b4729684757f8dc3fbf
