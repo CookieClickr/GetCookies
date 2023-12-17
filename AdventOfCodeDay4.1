@@ -1,0 +1,48 @@
+Day 4: The Ideal Stocking Stuffer ---
+
+Santa needs help mining some AdventCoins (very similar to bitcoins) to use as gifts for all the economically forward-thinking little girls and boys.
+
+To do this, he needs to find MD5 hashes which, in hexadecimal, start with at least five zeroes. The input to the MD5 hash is some secret key (your puzzle input, given below) 
+followed by a number in decimal. 
+To mine AdventCoins, you must find Santa the lowest positive number (no leading zeroes: 1, 2, 3, ...) that produces such a hash.
+
+Code:
+import hashlib
+# import string input: ckczppom
+# loop that goes through them
+# add numbers to the end starting at 0
+# convert to one string: input + number
+# hash it
+# convert to char array and see if it checks out else number+1
+# if it has 5 leading zeros break the loop and output number
+
+def hexadigest(number: int, input: str):
+    convert = input + str(number)
+    result = hashlib.md5(convert.encode())
+    return result.hexdigest()
+def CheckCharArray(input: str):
+    CharArray = [char for char in input]
+    count: int = 0
+    round: int = 0
+    for possibleZero in CharArray:
+        if possibleZero == '0':
+            count = count + 1
+        if count == 5:
+            return True
+        round = round + 1
+        if round == 5:
+            return False
+
+input: str = "ckczppom"
+getThemZeros = False
+number = 0
+gethashing = "X"
+while getThemZeros == False:
+    gethashing = hexadigest(number,input)
+    getThemZeros = CheckCharArray(gethashing)
+    number = number + 1
+print(number)
+print(gethashing)
+
+The Number is: 117947
+And just because I was curios the MD5 hexadecimal equivalent is: 00000fe1c139a2c710e9a5c03ec1af03
