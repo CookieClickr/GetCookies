@@ -12,7 +12,7 @@ Log
     December 13, 2023 - AOC Day 3.1
     December 14, 2023 - AOC Day 3.1
     December 15, 2023 - AOC Day 3.2
-    December 16, 2023 - AOC Day 3.2
+    December 16, 2023 - AOC Day 4.1
     December 17, 2023 - AOC Day 4.1
     December 18, 2023 - AOC Day 4.2
     December 19, 2023
