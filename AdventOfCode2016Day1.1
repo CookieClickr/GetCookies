@@ -1,0 +1,46 @@
+With a group of fellow students we've started the Advent of Code challenge 2016.
+It was way taffer than expected. More infos on my blog (Taxicab geometry)
+
+Here's the code:
+file = "R1, R3, L2, L5, L2, L1, R3, L4, R2, L2, L4, R2, L1, R1, L2, R3, L1, L4, R2, L5, R3, R4, L1, R2, L1, R3, L4, R5, L4, L5, R5, L3, R2, L3, L3, R1, R3, L4, R2, R5, L4, R1, L1, L1, R5, L2, R1, L2, R188, L5, L3, R5, R1, L2, L4, R3, R5, L3, R3, R45, L4, R4, R72, R2, R3, L1, R1, L1, L1, R192, L1, L1, L1, L4, R1, L2, L5, L3, R5, L3, R3, L4, L3, R1, R4, L2, R2, R3, L5, R3, L1, R1, R4, L2, L3, R1, R3, L4, L3, L4, L2, L2, R1, R3, L5, L1, R4, R2, L4, L1, R3, R3, R1, L5, L2, R4, R4, R2, R1, R5, R5, L4, L1, R5, R3, R4, R5, R3, L1, L2, L4, R1, R4, R5, L2, L3, R4, L4, R2, L2, L4, L2, R5, R1, R4, R3, R5, L4, L4, L5, L5, R3, R4, L1, L3, R2, L2, R1, L3, L5, R5, R5, R3, L4, L2, R4, R5, R1, R4, L3"
+elements: list = file.split(", ")
+
+NOSW: chr = 'N'
+y= 0
+x= 0
+#keepTrack: dict = {x: [y]}
+#keepTrack = keepingup(x,  y, keepTrack)
+
+for element in elements:
+    direction = element[0]
+    distance = int(element[1:])
+    if NOSW == 'N':
+        if direction == 'R':
+            x = x + distance
+            NOSW = 'O'
+        else:
+            x = x-distance
+            NOSW = 'W'
+    elif NOSW == 'W':
+        if direction == 'R':
+            y = y + distance
+            NOSW = 'N'
+        else:
+            y = y - distance
+            NOSW = 'S'
+    elif NOSW == 'O':
+        if direction == 'R':
+            y = y - distance
+            NOSW = 'S'
+        else:
+            y = y + distance
+            NOSW = 'N'
+    elif NOSW == 'S':
+        if direction == 'R':
+            x = x - distance
+            NOSW = 'W'
+        else:
+            x = x + distance
+            NOSW = 'O'
+
+print(abs(x)+abs(y))
