@@ -1,0 +1,46 @@
+2016 Day 1.2
+def find_first_location_visited_twice(instructions):
+    # Initialize variables
+    x, y = 0, 0  # Starting coordinates
+    current_direction = 'N'  # Initial direction
+    visited_locations = set()  # Set to store visited locations
+
+    # Add the starting location to the set
+    visited_locations.add((x, y))
+
+    # Function to update direction based on the current direction and turn
+    def update_direction(current_direction, turn):
+        directions = {'N': ['W', 'E'], 'E': ['N', 'S'], 'S': ['E', 'W'], 'W': ['S', 'N']}
+        return directions[current_direction][turn]
+
+    # Iterate through the instructions
+    for instruction in instructions:
+        turn, distance = instruction[0], int(instruction[1:])
+
+        # Update current direction based on the turn
+        current_direction = update_direction(current_direction, 0 if turn == 'R' else 1)
+
+        # Move forward the given distance
+        for k in range(distance):
+            if current_direction == 'N':
+                y += 1
+            elif current_direction == 'E':
+                x += 1
+            elif current_direction == 'S':
+                y -= 1
+            elif current_direction == 'W':
+                x -= 1
+
+            # Check if the current location has been visited before
+            if (x, y) in visited_locations:
+                return abs(x) + abs(y)
+
+            # Add the current location to the set
+            visited_locations.add((x, y))
+
+    return None  # No location visited twice
+
+# Example usage:
+instructions = elements
+result = find_first_location_visited_twice(instructions)
+print(result)
