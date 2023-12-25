@@ -1,0 +1,43 @@
+
+
+
+def atleast3Vowels(input: str):
+    tempChararr = [char for char in input]
+    tempCounter = 0
+    for possibleV in tempChararr:
+        if possibleV== 'a'or possibleV== 'e'or possibleV== 'i'or possibleV== 'o'or possibleV== 'u':
+            tempCounter +=1
+        if tempCounter <=3:
+            return True
+    return False
+
+def lettersInARow(input: str):
+    tempChararr = [char for char in input]
+    tempStr = " "
+    for i in range(len(tempChararr)-2):
+         tempVar=i+1
+         if tempChararr[tempVar]==tempChararr[tempVar-1]:
+             tempStr = tempChararr[tempVar] + tempChararr[tempVar-1]
+         if tempChararr[tempVar]==tempChararr[tempVar-1] and tempChararr[tempVar]!=tempStr and tempStr != " ":
+             return  True
+
+    return False
+
+def noNaughtyString(input: str):
+    tempChararr = [char for char in input]
+    tempStr = " "
+    for i in range(len(tempChararr) - 2):
+        tempVar = i + 1
+        if (tempChararr[tempVar]=='a' and tempChararr[tempVar-1]=='b')or(tempChararr[tempVar]=='c' and tempChararr[tempVar-1]=='d') or (tempChararr[tempVar]=='p' and tempChararr[tempVar-1]=='q') or (tempChararr[tempVar]=='x' and tempChararr[tempVar-1]=='y'):
+            return False
+    return True
+
+#MAIN
+filename = "C:\\Users\\Admin\\Documents\\AOC\\SringInput.txt"
+with open(filename, 'r') as file:
+    instruction = file.readlines()
+result = 0
+for instruct in instruction:
+    if noNaughtyString(instruct) and lettersInARow(instruct) and atleast3Vowels(instruct):
+        result +=1
+print(result)
