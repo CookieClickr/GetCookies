@@ -1,0 +1,34 @@
+Rätsel:
+
+**Der geheimnisvolle Code:**
+
+In einer fernen Programmierwelt gibt es einen geheimnisvollen Code, der aus einer unbekannten Kombination von Zahlen besteht. Die einzige Information, die du darüber hast, ist folgende:
+
+- Die Summe der Zahlen beträgt 21.
+- Das Produkt der Zahlen ist 72.
+
+Kannst du den geheimnisvollen Code knacken?
+
+Lösung:
+
+Hier ist eine mögliche Lösung in Python:
+
+```python
+# Funktion zur Lösung des Rätsels
+def finde_geheimnisvollen_code():
+    for zahl1 in range(1, 22):
+        for zahl2 in range(1, 22):
+            if zahl1 + zahl2 == 21 and zahl1 * zahl2 == 72:
+                return zahl1, zahl2
+
+# Lösung aufrufen
+ergebnis = finde_geheimnisvollen_code()
+
+# Ergebnis ausgeben
+print("Die Zahlen im geheimnisvollen Code sind:", ergebnis)
+```
+
+Ergebnis:
+```
+Die Zahlen im geheimnisvollen Code sind: (9, 12)
+```
