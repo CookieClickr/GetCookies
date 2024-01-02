@@ -1,0 +1,8 @@
+import random
+
+def generate_six_digit_combination():
+    return random.randint(100000, 999999)
+
+# Example usage
+six_digit_combination = generate_six_digit_combination()
+print("Generated six-digit combination:", six_digit_combination)
