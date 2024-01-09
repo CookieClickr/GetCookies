@@ -1,0 +1,10 @@
+def logical_table():
+    for A in [False, True]:
+        for B in [False, True]:
+            A_and_B = A and B
+            A_or_B = A or B
+            not_A = not A
+            not_B = not B
+            print(f"| {int(A)} | {int(B)} | {int(A_and_B)} | {int(A_or_B)} | {int(not_A)} | {int(not_B)} |")
+if __name__ == "__main__":
+    logical_table()
