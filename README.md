@@ -16,3 +16,19 @@ Log
     December 17, 2023 - AOC Day 4.1
     December 18, 2023 - AOC Day 4.2
     December 19, 2023
+    December 20, 2023
+    December 21, 2023 - AOC 2016 Day 1.1
+    December 22, 2023 - AOC 2016 Day 1.2
+    December 23, 2023 - AOC 2015 Day 5.1
+    December 24-30, 2023 - Pause
+    December 31, 2023 - Coding Rätzel
+    Januar 1, 2024 
+    Januar 2, 2024 - Random Class
+    Januar 3, 2024 - kurzundknapp
+    Januar 4, 2024 - 
+    Januar 5, 2024 - 
+    Januar 6, 2024 - Tik Tak Toe
+    Januar 7, 2024 - 
+    Januar 8, 2024 - 
+    Januar 9, 2024 - logical tablec
+    
