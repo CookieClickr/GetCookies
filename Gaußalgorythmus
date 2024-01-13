@@ -1,0 +1,37 @@
+def gauss_elimination(matrix):
+    n = len(matrix)
+
+    # Forward elimination
+    for i in range(n):
+        # Make the diagonal element 1
+        diag_value = matrix[i][i]
+        for j in range(i, n + 1):
+            matrix[i][j] /= diag_value
+
+        # Eliminate other rows
+        for k in range(i + 1, n):
+            factor = matrix[k][i]
+            for j in range(i, n + 1):
+                matrix[k][j] -= factor * matrix[i][j]
+
+    # Backward substitution
+    for i in range(n - 1, 0, -1):
+        for k in range(i - 1, -1, -1):
+            factor = matrix[k][i]
+            matrix[k][i] -= factor * matrix[i][i]
+            matrix[k][n] -= factor * matrix[i][n]
+
+    # Extract solution
+    solution = [row[n] for row in matrix]
+
+    return solution
+
+# Example usage
+matrix = [
+    [2, -1, 1, 8],
+    [-3, -1, 2, -11],
+    [-2, 1, 2, -3]
+]
+
+result = gauss_elimination(matrix)
+print("Solution:", result)
