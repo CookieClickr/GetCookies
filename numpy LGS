@@ -1,0 +1,11 @@
+import numpy as np
+
+# Koeffizientenmatrix A und rechte Seite b des Gleichungssystems Ax = b
+A = np.array([[2, 3], [4, 5]])
+b = np.array([6, 15])
+
+# Lösung des Gleichungssystems
+x = np.linalg.solve(A, b)
+
+print("Lösung des Gleichungssystems:")
+print(x)
