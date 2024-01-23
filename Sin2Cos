@@ -1,0 +1,22 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+def sinus_to_cosinus(sinus_values):
+    # Umwandlung von Sinuswerten in Cosinuswerte
+    cosinus_values = np.cos(np.pi / 2 - sinus_values)
+    return cosinus_values
+
+# Beispiel Sinuswerte
+sinus_values = np.linspace(0, 2 * np.pi, 1000)
+
+# Umwandlung von Sinus in Cosinus
+cosinus_values = sinus_to_cosinus(sinus_values)
+
+# Plot für den Vergleich von Sinus und umgewandeltem Cosinus
+plt.plot(sinus_values, label='Sinus')
+plt.plot(cosinus_values, label='Umgewandelter Cosinus')
+plt.legend()
+plt.title('Sinus und umgewandelter Cosinus')
+plt.xlabel('Winkel (in Radianten)')
+plt.ylabel('Funktionswerte')
+plt.show()
