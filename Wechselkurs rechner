@@ -1,0 +1,28 @@
+def wechselkurs_rechner(betrag, wechselkurs):
+    return betrag * wechselkurs
+
+def main():
+    print("Willkommen beim Wechselkursrechner!")
+    
+    # Annahme: Der Benutzer gibt den Betrag in der Ausgangswährung ein
+    try:
+        betrag = float(input("Geben Sie den Betrag in der Ausgangswährung ein: "))
+    except ValueError:
+        print("Bitte geben Sie eine gültige Zahl ein.")
+        return
+    
+    # Annahme: Der Benutzer gibt den Wechselkurs ein
+    try:
+        wechselkurs = float(input("Geben Sie den Wechselkurs ein: "))
+    except ValueError:
+        print("Bitte geben Sie eine gültige Zahl ein.")
+        return
+    
+    # Berechnung des Betrags in der Zielwährung
+    ziel_betrag = wechselkurs_rechner(betrag, wechselkurs)
+    
+    # Ausgabe des Ergebnisses
+    print(f"{betrag} in der Ausgangswährung entspricht {ziel_betrag} in der Zielwährung.")
+
+if __name__ == "__main__":
+    main()
