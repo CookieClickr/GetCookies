@@ -1,0 +1,24 @@
+import sounddevice as sd
+import numpy as np
+from scipy.io.wavfile import write
+
+def record_audio(file_path, duration, samplerate=44100):
+    print("Aufnahme gestartet. Drücke 'Strg+C', um die Aufnahme zu beenden.")
+    
+    try:
+        # Audio aufnehmen
+        audio_data = sd.rec(int(samplerate * duration), samplerate=samplerate, channels=2, dtype=np.int16)
+        sd.wait()
+
+        # Audio in WAV-Datei speichern
+        write(file_path, samplerate, audio_data)
+        
+        print(f"Aufnahme abgeschlossen. Die Datei wurde unter '{file_path}' gespeichert.")
+    except KeyboardInterrupt:
+        print("Aufnahme abgebrochen.")
+
+if __name__ == "__main__":
+    file_path = "aufnahme.wav"  # Speicherort der aufgenommenen Datei
+    duration = 10  # Dauer der Aufnahme in Sekunden
+
+    record_audio(file_path, duration)
