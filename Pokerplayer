@@ -1,0 +1,61 @@
+import random
+
+# Funktion zum Mischen der Karten
+def shuffle_deck():
+    suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
+    ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+    deck = [{'rank': rank, 'suit': suit} for rank in ranks for suit in suits]
+    random.shuffle(deck)
+    return deck
+
+# Funktion zum Austeilen der Startkarten
+def deal_initial_cards(deck):
+    return [deck.pop() for _ in range(4)]
+
+# Funktion zum Anzeigen der Karten
+def display_cards(player_name, cards):
+    print(f"{player_name}'s cards:")
+    for card in cards:
+        print(f"  {card['rank']} of {card['suit']}")
+
+# Funktion zum Spielerzug
+def player_turn(player_name, player_cards, community_cards):
+    all_cards = player_cards + community_cards
+    display_cards(player_name, all_cards)
+    decision = input("Do you want to fold (f) or continue (c)? ").lower()
+    return decision == 'c'
+
+# Funktion zum Durchführen einer Runde
+def play_round():
+    deck = shuffle_deck()
+    player1_cards, player2_cards = deal_initial_cards(deck), deal_initial_cards(deck)
+    community_cards = []
+
+    # Spieler 1 ist dran
+    if player_turn("Player 1", player1_cards, community_cards):
+        community_cards += deck[:3]
+        del deck[:3]
+
+        # Spieler 2 ist dran
+        if player_turn("Player 2", player2_cards, community_cards):
+            community_cards += deck[:2]
+            del deck[:2]
+
+            # Zeige endgültige Karten
+            print("\nCommunity cards:")
+            for card in community_cards:
+                print(f"  {card['rank']} of {card['suit']}")
+            
+            # Ermittle den Gewinner
+            winner = determine_winner(player1_cards + community_cards, player2_cards + community_cards)
+            print(f"\n{winner} wins!")
+
+# Funktion zum Ermitteln des Gewinners
+def determine_winner(hand1, hand2):
+    # Hier sollte deine Logik zum Vergleich der Hände stehen
+    # Du könntest eine Bibliothek wie "poker" verwenden oder deine eigene Logik implementieren
+    return "Player 1"  # Platzhalter
+
+# Hauptprogramm
+if __name__ == "__main__":
+    play_round()
