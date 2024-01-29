@@ -1,0 +1,21 @@
+def fibonacci(n, cache={}):
+    if n in cache:
+        # Wenn der Wert bereits im Cache vorhanden ist, gibt ihn zurück
+        return cache[n]
+
+    if n <= 1:
+        # Basisfall: Fibonacci von 0 oder 1 ist gleich n
+        return n
+
+    # Fibonacci-Wert berechnen und im Cache speichern
+    result = fibonacci(n - 1, cache) + fibonacci(n - 2, cache)
+    cache[n] = result
+
+    return result
+
+
+# Beispielaufrufe
+n = 10
+fibonacci_value = fibonacci(n)
+print(f"Das Fibonacci-Element an der Position {n} ist: {fibonacci_value}")
+print(f"Anzahl der Berechnungen für die Fibonacci-Folge bis zur Position {n}: {len(fibonacci.cache)}")
