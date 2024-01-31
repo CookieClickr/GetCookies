@@ -1,0 +1,21 @@
+import random
+
+def number_guesser():
+    print("Willkommen zum Number Guesser!")
+    lower_limit = 1
+    upper_limit = 100
+    secret_number = random.randint(lower_limit, upper_limit)
+    
+    while True:
+        guess = int(input(f"Rate die Zahl zwischen {lower_limit} und {upper_limit}: "))
+        
+        if guess < secret_number:
+            print("Zu niedrig! Versuche es erneut.")
+        elif guess > secret_number:
+            print("Zu hoch! Versuche es erneut.")
+        else:
+            print(f"Glückwunsch! Du hast die Zahl {secret_number} erraten!")
+            break
+
+if __name__ == "__main__":
+    number_guesser()
