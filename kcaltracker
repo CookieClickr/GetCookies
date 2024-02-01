@@ -1,0 +1,20 @@
+class CalorieTracker:
+    def __init__(self):
+        self.calories = 0
+
+    def add_calories(self, amount):
+        self.calories += amount
+
+    def subtract_calories(self, amount):
+        self.calories -= amount
+
+    def get_total_calories(self):
+        return self.calories
+
+# Beispiel
+tracker = CalorieTracker()
+tracker.add_calories(500)
+tracker.subtract_calories(200)
+
+total_calories = tracker.get_total_calories()
+print(f"Total Calories: {total_calories}")
