@@ -1,0 +1,25 @@
+import random
+
+def erstelle_rezept(zutaten):
+    rezepte = {
+        "Nudeln mit Tomatensauce": ["Nudeln", "Tomatensauce", "Knoblauch", "Olivenöl"],
+        "Gemüsepfanne": ["Gemüse", "Olivenöl", "Knoblauch", "Salz"],
+        "Hähnchenbrust mit Brokkoli": ["Hähnchenbrust", "Brokkoli", "Zitrone", "Salz", "Pfeffer"],
+        # Füge weitere Rezepte hinzu
+    }
+
+    mögliche_rezepte = []
+
+    for rezept, benötigte_zutaten in rezepte.items():
+        if set(benötigte_zutaten).issubset(set(zutaten)):
+            mögliche_rezepte.append(rezept)
+
+    if mögliche_rezepte:
+        ausgewähltes_rezept = random.choice(mögliche_rezepte)
+        print(f"Hier ist ein Rezept für dich: {ausgewähltes_rezept}")
+    else:
+        print("Leider konnte kein passendes Rezept gefunden werden. Bitte probiere es mit anderen Zutaten.")
+
+# Beispielaufruf
+meine_zutaten = ["Nudeln", "Tomatensauce", "Knoblauch"]
+erstelle_rezept(meine_zutaten)
