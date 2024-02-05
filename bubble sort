@@ -1,0 +1,21 @@
+def bubble_sort(arr):
+    n = len(arr)
+
+    # Durchlaufe alle Elemente im Array
+    for i in range(n):
+        # Letzte i Elemente sind bereits sortiert, daher brauchen wir sie nicht zu überprüfen
+        for j in range(0, n-i-1):
+            # Vertausche, wenn das Element gefunden wird, das größer ist als das nächste Element
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+
+# Beispielverwendung:
+if __name__ == "__main__":
+    # Testarray
+    my_array = [64, 34, 25, 12, 22, 11, 90]
+
+    # Aufruf der Bubble Sort Funktion
+    bubble_sort(my_array)
+
+    # Ausgabe des sortierten Arrays
+    print("Sortiertes Array:", my_array)
