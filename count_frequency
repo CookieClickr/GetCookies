@@ -1,0 +1,5 @@
+def count_frequency(arr):
+    frequency = {}
+    for element in arr:
+        frequency[element] = frequency.get(element, 0) + 1
+    return frequency
